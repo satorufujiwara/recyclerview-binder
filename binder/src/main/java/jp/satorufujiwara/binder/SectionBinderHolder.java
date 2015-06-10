@@ -1,0 +1,94 @@
+package jp.satorufujiwara.binder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SectionBinderHolder<S extends Section, V extends ViewType, VH> {
+
+    private final List<List<Binder<V, VH>>> mSectionItemsList = new ArrayList<>();
+
+    public int getSectionIndex(S section) {
+        initSections(section);
+        final int sectionPosition = section.ordinal();
+        if (sectionPosition == 0) {
+            return 0;
+        }
+        int index = 0;
+        for (final List<Binder<V, VH>> items : mSectionItemsList
+                .subList(0, sectionPosition)) {
+            index += items.size();
+        }
+        return index;
+    }
+
+    public int getSectionSize(final S section) {
+        initSections(section);
+        return getSectionSize(section.ordinal());
+    }
+
+    public <B extends Binder<V, VH>> void add(final S section, final B item) {
+        initSections(section);
+        mSectionItemsList.get(section.ordinal()).add(item);
+    }
+
+    public <B extends Binder<V, VH>> void insert(final S section, final B item,
+            final int index) {
+        initSections(section);
+        mSectionItemsList.get(section.ordinal()).add(index, item);
+    }
+
+    public <B extends Binder<V, VH>> void remove(final S section, final B item) {
+        initSections(section);
+        mSectionItemsList.get(section.ordinal()).remove(item);
+    }
+
+    public void clear(final S section) {
+        initSections(section);
+        mSectionItemsList.get(section.ordinal()).clear();
+    }
+
+    public List<Binder<V, VH>> getAllItem(final S section) {
+        initSections(section);
+        return mSectionItemsList.get(section.ordinal());
+    }
+
+    public Binder<V, VH> getItem(final S section, final int index) {
+        initSections(section);
+        final List<Binder<V, VH>> list = mSectionItemsList
+                .get(section.ordinal());
+        if (list.size() <= index) {
+            return null;
+        }
+        return list.get(index);
+    }
+
+    public boolean isEmpty(final S section) {
+        initSections(section);
+        final List<Binder<V, VH>> list = mSectionItemsList
+                .get(section.ordinal());
+        return list.isEmpty();
+    }
+
+    public void clear() {
+        for (final List<Binder<V, VH>> items : mSectionItemsList) {
+            items.clear();
+        }
+        mSectionItemsList.clear();
+    }
+
+    private void initSections(final S section) {
+        final int sectionPosition = section.ordinal();
+        if(sectionPosition < mSectionItemsList.size()){
+            return;
+        }
+        for (int i = 0; i <= sectionPosition; i++) {
+            mSectionItemsList.add(new ArrayList<Binder<V, VH>>());
+        }
+    }
+
+    private int getSectionSize(final int sectionPosition) {
+        return mSectionItemsList.get(sectionPosition).size();
+    }
+
+
+}
