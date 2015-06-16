@@ -99,21 +99,26 @@ Binder added to Adapter is layouted in order of Section.
 
 # Usage
 
-1. Create class implemented [ViewType](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/ViewType.java)
+### 1. Create class implemented [ViewType](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/ViewType.java)
+
 Enum is useful for this class.
  
-2. Create classes extends [RecyclerBinder](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinder.java)
+#### 2. Create classes extends [RecyclerBinder](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinder.java)
+
 The number of these classes is same to number of ViewType in Step 1.
 
-3. Create class implemented [Section](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/Section.java)
+### 3. Create class implemented [Section](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/Section.java)
+
 Enum is useful for this class.
 
-4. Create [RecyclerBinderAdapter](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinderAdapter.java)
+### 4. Create [RecyclerBinderAdapter](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinderAdapter.java)
+
 ```java
 RecyclerBinderAdapter<Section, ViewType> adapter = new RecyclerBinderAdapter<>();
 ```
 
-5. Control RecyclerView
+### 5. Control RecyclerView
+
 ```java
 adapter.add(Section.SECTION_1, binder);
 adapter.addIfEmpty(Section.SECTION_1, binder);
