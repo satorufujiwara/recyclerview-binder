@@ -1,7 +1,7 @@
 recyclerview-binder
 ===
 
-Adapter for managing order of RecyclerView's item and for managing multiple view types.
+Android Library for RecyclerView to manage order of items and multiple view types.
 
 # Features
 * Insert any items to wherever you want without calculating their position.
