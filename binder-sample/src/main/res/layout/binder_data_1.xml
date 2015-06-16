@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="12dp"
         android:elevation="10dp"
@@ -11,8 +11,8 @@
         app:cardCornerRadius="4dp">
 
     <ImageView android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:src="@drawable/sake"
+               android:layout_height="240dp"
+               android:src="@drawable/binder1_bg"
                android:scaleType="centerCrop"
             />
 
