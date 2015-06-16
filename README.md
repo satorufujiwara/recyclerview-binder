@@ -15,7 +15,8 @@ dependencies {
 # Quick Example
 
 ViewType decides RecyclerView item's layout.
-```java:BinderSampleViewType.java
+
+```java
 public enum BinderSampleViewType implements ViewType {
 
     VIEW_TYPE_1,
@@ -30,7 +31,8 @@ public enum BinderSampleViewType implements ViewType {
 ```
 
 Binder binds data to Views in RecyclerView item.
-```java:DataBinder1.java
+
+```java
 public class DataBinder1 extends RecyclerBinder<BinderSampleViewType> {
 
     private final String text;
@@ -67,6 +69,7 @@ public class DataBinder1 extends RecyclerBinder<BinderSampleViewType> {
 ```
 
 Binder added to Adapter is layouted in order of Section.
+
 ```java
     RecyclerBinderAdapter<BinderSampleSection, BinderSampleViewType> adapter
             = new RecyclerBinderAdapter<>();
