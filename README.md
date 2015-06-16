@@ -1,6 +1,13 @@
 recyclerview-binder
 ===
 
+Adapter for managing order of RecyclerView's item and for managing multiple view types.
+
+# Features
+* Insert any items to wherever you want without calculating their position.
+* Insert any items in desired order regardless of the order of calling 'add/insert'.
+* Separate implementations for each view type into their own classes.
+
 # Gradle
 
 ```groovy
@@ -106,9 +113,9 @@ Binder added to Adapter is layouted in order of Section.
 
 Enum is useful for this class.
  
-#### 2. Create classes extends [RecyclerBinder](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinder.java)
+### 2. Create classes extends [RecyclerBinder](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/recycler/RecyclerBinder.java)
 
-The number of these classes is same to number of ViewType in Step 1.
+The number of these classes is the same to number of ViewType in Step 1.
 
 ### 3. Create class implemented [Section](https://github.com/satorufujiwara/recyclerview-binder/blob/master/binder/src/main/java/jp/satorufujiwara/binder/Section.java)
 
