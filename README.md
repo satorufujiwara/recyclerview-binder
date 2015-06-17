@@ -8,6 +8,8 @@ Android Library for RecyclerView to manage order of items and multiple view type
 * Insert any items in desired order regardless of the order of calling 'add/insert'.
 * Separate implementations for each view type into their own classes.
 
+ ![Sample](/art/sample.gif)
+
 # Gradle
 
 ```groovy
