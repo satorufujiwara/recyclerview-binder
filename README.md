@@ -16,10 +16,7 @@ Android Library for RecyclerView to manage order of items and multiple view type
 
 ```groovy
 repositories {
-    // jcenter() // requesting to inclue.
-    maven {
-        url "http://dl.bintray.com/satorufujiwara/maven"
-    }
+    jcenter()
 }
 dependencies {
     compile 'jp.satorufujiwara:recyclerview-binder:1.0.0'
