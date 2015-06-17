@@ -1,4 +1,4 @@
-package jp.hollywist.binder;
+package jp.satorufujiwara.binder;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
