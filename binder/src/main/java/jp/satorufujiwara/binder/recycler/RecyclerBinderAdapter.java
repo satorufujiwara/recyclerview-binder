@@ -15,6 +15,7 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
     private final SectionBinderHolder<S, V, RecyclerView.ViewHolder> mSectionBinderHolder
             = new SectionBinderHolder<>();
     private final Object mLock = new Object();
+    private boolean notifyOnChange = true;
 
     public int getSectionSize(final S section) {
         return mSectionBinderHolder.getSectionSize(section);
@@ -41,6 +42,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
         synchronized (mLock) {
             mSectionBinderHolder.insert(section, item, index);
             insert(item, mSectionBinderHolder.getSectionIndex(section) + index);
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -54,7 +58,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
                 insert(item, sectionIndex + insertPosition);
                 insertPosition++;
             }
-            notifyDataSetChanged();
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -63,6 +69,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
         synchronized (mLock) {
             mSectionBinderHolder.remove(section, item);
             remove(item);
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -73,7 +82,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
                 mSectionBinderHolder.remove(section, item);
                 remove(item);
             }
-            notifyDataSetChanged();
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -85,7 +96,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
                 remove(removeItem);
             }
             mSectionBinderHolder.clear(section);
-            notifyDataSetChanged();
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -101,7 +114,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
             final int moduleIndex = mSectionBinderHolder.getSectionIndex(section);
             mSectionBinderHolder.add(section, item);
             insert(item, moduleIndex);
-            notifyDataSetChanged();
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -121,7 +136,9 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
                 insert(item, sectionIndex + insertPosition);
                 insertPosition++;
             }
-            notifyDataSetChanged();
+            if (notifyOnChange) {
+                notifyDataSetChanged();
+            }
         }
     }
 
@@ -143,5 +160,7 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
         mSectionBinderHolder.clear();
     }
 
-
+    public void setNotifyOnChange(boolean notifyOnChange) {
+        this.notifyOnChange = notifyOnChange;
+    }
 }
