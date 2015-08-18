@@ -7,19 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.ref.WeakReference;
-
 import jp.satorufujiwara.binder.Binder;
 import jp.satorufujiwara.binder.ViewType;
 
 public abstract class RecyclerBinder<V extends ViewType>
         implements Binder<V, RecyclerView.ViewHolder> {
 
-    private final WeakReference<Activity> mActivity;
     private final V mViewType;
+    private Activity mActivity;
 
     protected RecyclerBinder(final Activity activity, final V viewType) {
-        mActivity = new WeakReference<>(activity);
+        mActivity = activity;
         mViewType = viewType;
     }
 
@@ -30,12 +28,13 @@ public abstract class RecyclerBinder<V extends ViewType>
 
     @Override
     public final RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent) {
-        final Activity activity = getActivity();
-        if (activity == null) {
-            return null;
-        }
-        return onCreateViewHolder(activity.getLayoutInflater()
+        return onCreateViewHolder(mActivity.getLayoutInflater()
                 .inflate(layoutResId(), parent, false));
+    }
+
+    @Override
+    public void onDestroy() {
+        mActivity = null;
     }
 
     @Override
@@ -44,7 +43,7 @@ public abstract class RecyclerBinder<V extends ViewType>
     }
 
     protected final Activity getActivity() {
-        return mActivity.get();
+        return mActivity;
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import jp.satorufujiwara.binder.Binder;
 import jp.satorufujiwara.binder.ViewType;
 
-class BaseRecyclerBinderAdapter<V extends ViewType,  VH extends RecyclerView.ViewHolder>
+class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> {
 
     private final Object mLock = new Object();
@@ -56,12 +56,16 @@ class BaseRecyclerBinderAdapter<V extends ViewType,  VH extends RecyclerView.Vie
 
     void remove(final Binder<V, VH> object) {
         synchronized (mLock) {
+            object.onDestroy();
             mObjects.remove(object);
         }
     }
 
     void clear() {
         synchronized (mLock) {
+            for (final Binder<V, VH> item : mObjects) {
+                item.onDestroy();
+            }
             mObjects.clear();
         }
     }
