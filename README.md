@@ -10,6 +10,7 @@ Android Library for RecyclerView to manage order of items and multiple view type
 * Insert any items to wherever you want without calculating their position.
 * Insert any items in desired order regardless of the order of calling 'add/insert'.
 * Separate implementations for each view type into their own classes.
+* Support RxJava.
 
 # Sample
 
@@ -22,7 +23,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'jp.satorufujiwara:recyclerview-binder:1.1.0'
+    compile 'jp.satorufujiwara:recyclerview-binder:1.2.0'
 }
 ```
 
@@ -146,6 +147,18 @@ adapter.removeAll(Section.SECTION_1);
 adapter.replaceAll(Section.SECTION_1, List<RecyclerBinder> binders);
 adapter.clear();
 ```
+
+## Use with RxJava
+
+If subscibe observable in `RecyclerBinder` classes, use `RxRecyclerBinder` and `bindToLifecycle()`.
+
+```java
+myObservable
+    .compose(bindToLifecycle())
+    .subscribe();
+```
+When item removed from adapter, observable unsubscribe.
+Note : Due to the unsubscription works, please call `RecyclerBinderAdapter.clear()` in `Activity.onDestroy()` or `Fragment.onDestroyView()`.
 
 
 License
