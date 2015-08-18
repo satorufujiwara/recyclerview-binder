@@ -56,7 +56,7 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
 
     void remove(final Binder<V, VH> object) {
         synchronized (mLock) {
-            object.onDestroy();
+            object.onRemoved();
             mObjects.remove(object);
         }
     }
@@ -64,7 +64,7 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
     void clear() {
         synchronized (mLock) {
             for (final Binder<V, VH> item : mObjects) {
-                item.onDestroy();
+                item.onRemoved();
             }
             mObjects.clear();
         }

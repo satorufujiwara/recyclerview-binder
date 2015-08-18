@@ -33,7 +33,7 @@ public abstract class RecyclerBinder<V extends ViewType>
     }
 
     @Override
-    public void onDestroy() {
+    public void onRemoved() {
         mActivity = null;
     }
 
