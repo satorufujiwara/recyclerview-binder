@@ -27,7 +27,10 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
 
     @Override
     public void onViewRecycled(VH holder) {
-        getItem(holder.getAdapterPosition()).onViewRecycled(holder);
+        final int position = holder.getAdapterPosition();
+        if (position != RecyclerView.NO_POSITION) {
+            getItem(position).onViewRecycled(holder);
+        }
     }
 
     @Override
