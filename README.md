@@ -2,6 +2,7 @@ recyclerview-binder
 ===
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-recyclerview--binder-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2368)
 [![Download](https://api.bintray.com/packages/satorufujiwara/maven/recyclerview-binder/images/download.svg)](https://bintray.com/satorufujiwara/maven/recyclerview-binder/_latestVersion)
 
 Android Library for RecyclerView to manage order of items and multiple view types.
