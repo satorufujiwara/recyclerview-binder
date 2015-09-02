@@ -8,6 +8,8 @@ public interface Binder<V extends ViewType, VH> {
 
     void onBindViewHolder(VH viewHolder, int position);
 
+    void onViewRecycled(VH holder);
+
     void onRemoved();
 
     V getViewType();

@@ -26,6 +26,11 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
     }
 
     @Override
+    public void onViewRecycled(VH holder) {
+        getItem(holder.getAdapterPosition()).onViewRecycled(holder);
+    }
+
+    @Override
     public int getItemCount() {
         return mObjects.size();
     }
