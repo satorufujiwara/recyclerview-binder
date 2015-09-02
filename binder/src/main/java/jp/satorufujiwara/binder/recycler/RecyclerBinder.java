@@ -33,6 +33,11 @@ public abstract class RecyclerBinder<V extends ViewType>
     }
 
     @Override
+    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+        // no op
+    }
+
+    @Override
     public void onRemoved() {
         mActivity = null;
     }

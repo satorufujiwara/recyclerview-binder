@@ -2,6 +2,7 @@ package jp.satorufujiwara.binder.recycler;
 
 
 import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 
 import jp.satorufujiwara.binder.ViewType;
 import rx.Observable;
@@ -18,6 +19,12 @@ public abstract class RxRecyclerBinder<V extends ViewType> extends RecyclerBinde
     @Override
     public void onRemoved() {
         super.onRemoved();
+        lifecycleSubject.onNext(null);
+    }
+
+    @Override
+    public void onViewRecycled(RecyclerView.ViewHolder holder) {
+        super.onViewRecycled(holder);
         lifecycleSubject.onNext(null);
     }
 
