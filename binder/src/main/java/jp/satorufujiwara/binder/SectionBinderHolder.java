@@ -9,7 +9,7 @@ public class SectionBinderHolder<S extends Section, V extends ViewType, VH> {
 
     public int getSectionIndex(S section) {
         initSections(section);
-        final int sectionPosition = section.ordinal();
+        final int sectionPosition = section.position();
         if (sectionPosition == 0) {
             return 0;
         }
@@ -23,39 +23,39 @@ public class SectionBinderHolder<S extends Section, V extends ViewType, VH> {
 
     public int getSectionSize(final S section) {
         initSections(section);
-        return getSectionSize(section.ordinal());
+        return getSectionSize(section.position());
     }
 
     public <B extends Binder<V, VH>> void add(final S section, final B item) {
         initSections(section);
-        mSectionItemsList.get(section.ordinal()).add(item);
+        mSectionItemsList.get(section.position()).add(item);
     }
 
     public <B extends Binder<V, VH>> void insert(final S section, final B item,
             final int index) {
         initSections(section);
-        mSectionItemsList.get(section.ordinal()).add(index, item);
+        mSectionItemsList.get(section.position()).add(index, item);
     }
 
     public <B extends Binder<V, VH>> void remove(final S section, final B item) {
         initSections(section);
-        mSectionItemsList.get(section.ordinal()).remove(item);
+        mSectionItemsList.get(section.position()).remove(item);
     }
 
     public void clear(final S section) {
         initSections(section);
-        mSectionItemsList.get(section.ordinal()).clear();
+        mSectionItemsList.get(section.position()).clear();
     }
 
     public List<Binder<V, VH>> getAllItem(final S section) {
         initSections(section);
-        return mSectionItemsList.get(section.ordinal());
+        return mSectionItemsList.get(section.position());
     }
 
     public Binder<V, VH> getItem(final S section, final int index) {
         initSections(section);
         final List<Binder<V, VH>> list = mSectionItemsList
-                .get(section.ordinal());
+                .get(section.position());
         if (list.size() <= index) {
             return null;
         }
@@ -65,7 +65,7 @@ public class SectionBinderHolder<S extends Section, V extends ViewType, VH> {
     public boolean isEmpty(final S section) {
         initSections(section);
         final List<Binder<V, VH>> list = mSectionItemsList
-                .get(section.ordinal());
+                .get(section.position());
         return list.isEmpty();
     }
 
@@ -77,7 +77,7 @@ public class SectionBinderHolder<S extends Section, V extends ViewType, VH> {
     }
 
     private void initSections(final S section) {
-        final int sectionPosition = section.ordinal();
+        final int sectionPosition = section.position();
         if(sectionPosition < mSectionItemsList.size()){
             return;
         }
