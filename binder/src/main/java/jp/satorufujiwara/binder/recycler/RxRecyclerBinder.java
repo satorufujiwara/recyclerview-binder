@@ -37,10 +37,9 @@ public abstract class RxRecyclerBinder<V extends ViewType> extends RecyclerBinde
     }
 
     public final <T> Observable.Transformer<T, T> bindToLifecycle() {
-        if (lifecycleSubject != null) {
-            lifecycleSubject.onNext(null);
+        if (lifecycleSubject == null) {
+            lifecycleSubject = BehaviorSubject.create();
         }
-        lifecycleSubject = BehaviorSubject.create();
         return bind(lifecycleSubject);
     }
 

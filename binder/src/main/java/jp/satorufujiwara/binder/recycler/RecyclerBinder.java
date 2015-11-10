@@ -47,7 +47,7 @@ public abstract class RecyclerBinder<V extends ViewType>
         return mViewType;
     }
 
-    protected final Activity getActivity() {
+    public final Activity getActivity() {
         return mActivity;
     }
 
