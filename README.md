@@ -24,7 +24,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'jp.satorufujiwara:recyclerview-binder:1.2.2'
+    compile 'jp.satorufujiwara:recyclerview-binder:1.3.0'
 }
 ```
 
@@ -112,7 +112,12 @@ Binder added to Adapter is layouted in order of Section.
 
         SECTION_1,
         SECTION_2,
-        SECTION_3
+        SECTION_3;
+        
+        @Override
+        public int position() {
+            return ordinal();
+        }
     }
 ```
 
