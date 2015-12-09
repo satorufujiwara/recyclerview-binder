@@ -17,6 +17,10 @@ public class RecyclerBinderAdapter<S extends Section, V extends ViewType>
     private final Object mLock = new Object();
     private boolean notifyOnChange = true;
 
+    public int getSectionPosition(final S section) {
+        return mSectionBinderHolder.getSectionIndex(section);
+    }
+
     public int getSectionSize(final S section) {
         return mSectionBinderHolder.getSectionSize(section);
     }
