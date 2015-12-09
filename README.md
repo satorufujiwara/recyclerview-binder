@@ -24,7 +24,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    compile 'jp.satorufujiwara:recyclerview-binder:1.3.1'
+    compile 'jp.satorufujiwara:recyclerview-binder:1.3.2'
 }
 ```
 
