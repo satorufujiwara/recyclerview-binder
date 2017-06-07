@@ -1,7 +1,7 @@
 package jp.satorufujiwara.binder.recycler;
 
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import jp.satorufujiwara.binder.ViewType;
@@ -12,8 +12,8 @@ public abstract class RxRecyclerBinder<V extends ViewType> extends RecyclerBinde
 
     private BehaviorSubject<Void> lifecycleSubject = null;
 
-    protected RxRecyclerBinder(final Activity activity, final V viewType) {
-        super(activity, viewType);
+    protected RxRecyclerBinder(final Context context, final V viewType) {
+        super(context, viewType);
     }
 
     @Override
