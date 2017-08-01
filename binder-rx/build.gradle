@@ -19,4 +19,6 @@ android {
 }
 
 dependencies {
+    compile project(':binder')
+    compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
 }

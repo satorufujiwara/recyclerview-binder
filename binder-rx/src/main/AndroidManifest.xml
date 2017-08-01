@@ -1,4 +1,4 @@
 <manifest
-    package="jp.satorufujiwara.binder.rx">
+        package="jp.satorufujiwara.binder.rx">
     <application />
 </manifest>
