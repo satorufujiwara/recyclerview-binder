@@ -1,15 +1,14 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION as int
     buildToolsVersion BUILD_TOOLS_VERSION
 
     defaultConfig {
-        applicationId "jp.satorufujiwara.binder.sample"
         minSdkVersion MIN_SDK_VERSION as int
         targetSdkVersion TARGET_SDK_VERSION as int
-        versionCode 1
-        versionName "1.0"
+        versionName project.version
+
     }
     buildTypes {
         release {
@@ -21,12 +20,5 @@ android {
 
 dependencies {
     compile project(':binder')
-    compile project(':binder-rx')
-
-    compile "com.android.support:appcompat-v7:$SUPPORT_APP_COMPAT_VERSION"
-    compile "com.android.support:recyclerview-v7:$SUPPORT_APP_COMPAT_VERSION"
-    compile "com.android.support:cardview-v7:$SUPPORT_APP_COMPAT_VERSION"
     compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
-
-    compile 'com.jakewharton:butterknife:6.1.0'
 }
