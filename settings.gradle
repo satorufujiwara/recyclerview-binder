@@ -1,1 +1,1 @@
-include ':binder', ':binder-sample'
+include ':binder', ':binder-sample', ':binder-rx'
