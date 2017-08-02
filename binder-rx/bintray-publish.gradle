@@ -6,14 +6,14 @@ publishing {
         mavenJava(MavenPublication) {
             groupId GROUP
             version VERSION_NAME
-            artifactId 'recyclerview-binder'
+            artifactId 'recyclerview-binder-rx'
 //            artifact "build/outputs/aar/binder-release.aar"
             artifact androidJar
             artifact androidJavadocsJar
             artifact androidSourcesJar
             pom.withXml {
                 Node root = asNode()
-                root.appendNode('name', 'recyclerview-binder')
+                root.appendNode('name', 'recyclerview-binder-rx')
                 root.appendNode('description', POM_DESCRIPTION)
                 root.appendNode('url', POM_URL)
 
@@ -52,7 +52,7 @@ bintray {
     publish = false
     pkg {
         repo = 'maven'
-        name = 'recyclerview-binder'
+        name = 'recyclerview-binder-rx'
         licenses = ['Apache-2.0']
         labels = ['android']
 

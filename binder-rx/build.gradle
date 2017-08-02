@@ -22,3 +22,6 @@ dependencies {
     compile project(':binder')
     compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
 }
+
+apply from: 'android-artifacts.gradle'
+apply from: 'bintray-publish.gradle'
