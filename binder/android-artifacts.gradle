@@ -15,7 +15,9 @@ task androidSourcesJar(type: Jar) {
 }
 
 task androidJar(type: Jar) {
-    from 'build/intermediates/classes/release'
+    from('build/intermediates/classes/release'){
+        exclude 'android/**'
+    }
 }
 
 artifacts {
