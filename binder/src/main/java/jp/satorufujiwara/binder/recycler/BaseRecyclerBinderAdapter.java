@@ -29,7 +29,10 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
     public void onViewRecycled(VH holder) {
         final int position = holder.getAdapterPosition();
         if (position != RecyclerView.NO_POSITION) {
-            getItem(position).onViewRecycled(holder);
+            final Binder<V, VH> item = getItem(position);
+            if (item != null) {
+                item.onViewRecycled(holder);
+            }
         }
     }
 
@@ -40,10 +43,18 @@ class BaseRecyclerBinderAdapter<V extends ViewType, VH extends RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
-        return getItem(position).getViewType().viewType();
+        final Binder<V, VH> item = getItem(position);
+        if (item != null) {
+            return item.getViewType().viewType();
+        } else {
+            return RecyclerView.INVALID_TYPE;
+        }
     }
 
     public Binder<V, VH> getItem(int position) {
+        if (mObjects.size() <= position) {
+            return null;
+        }
         return mObjects.get(position);
     }
 
